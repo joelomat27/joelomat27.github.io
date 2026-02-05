@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Eine besondere Frage</title>
+    <style>
+        body {
+            background-color: #fde2e4; /* Sanftes Rosa */
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 100px;
+        }
+        h1 {
+            color: #d90429; /* Kräftiges Rot */
+            font-size: 48px;
+        }
+        .buttons {
+            margin-top: 50px;
+        }
+        .button {
+            padding: 15px 30px;
+            font-size: 24px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            margin: 0 20px;
+            transition: all 0.3s ease;
+        }
+        #yesButton {
+            background-color: #4caf50; /* Grün */
+            color: white;
+        }
+        #noButton {
+            background-color: #f44336; /* Rot */
+            color: white;
+            position: absolute; /* Wichtig für die Bewegung */
+        }
+
+        /* --- Style für das Pop-up --- */
+        .popup-overlay {
+            display: none; /* Standardmäßig versteckt */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Dunkler, halbtransparenter Hintergrund */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .popup-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 90%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .popup-content img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+        .popup-content h2 {
+            color: #d90429;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Will you be my Valentine?</h1>
+
+<div class="buttons">
+    <button class="button" id="yesButton" onclick="showPopup()">Yes</button>
+    <button class="button" id="noButton">No</button>
+</div>
+
+<!-- Das ist das versteckte Pop-up-Fenster -->
+<div id="valentinePopup" class="popup-overlay" onclick="hidePopup()">
+    <div class="popup-content">
+        <h2>Jaaaa! Ich liebe dich von hier bis in die Unendlichkeit und viel weiter!</h2>
+        <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExenAyYnJkNzNqdmNtcDAxZHVua3dkMDJxazcycjBkNG05YmxobHgyaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/YEaQWIJRg6dTa/giphy.gif" alt="Love GIF">
+    </div>
+</div>
+
+<script>
+    const noButton = document.getElementById('noButton');
+    const popup = document.getElementById('valentinePopup');
+
+    // Funktion für den "No"-Button
+    noButton.addEventListener('mouseover', () => {
+        const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+        const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+        noButton.style.left = `${x}px`;
+        noButton.style.top = `${y}px`;
+    });
+
+    // Funktion, um das Pop-up anzuzeigen
+    function showPopup() {
+        popup.style.display = 'flex';
+    }
+
+    // Funktion, um das Pop-up zu verstecken (wenn man daneben klickt)
+    function hidePopup() {
+        popup.style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
